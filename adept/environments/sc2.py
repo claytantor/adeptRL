@@ -255,7 +255,7 @@ class SC2ScaleChannels(BaseOp):
                     scales[i] = feat.scale
         
         # self.scales = 1. / torch.tensor(scales).float()
-        self.scales = 1. /  scales.clone().detach().requires_grad_(True)
+        self.scales = 1. /  scales.clone().detach().float()
         
 
     def update_space(self, old_space):
