@@ -253,7 +253,10 @@ class SC2ScaleChannels(BaseOp):
             elif mode == 'scalar':
                 if feat.type == features.FeatureType.SCALAR:
                     scales[i] = feat.scale
-        self.scales = 1. / torch.tensor(scales).float()
+        
+        # self.scales = 1. / torch.tensor(scales).float()
+        self.scales = 1. /  scales.clone().detach().requires_grad_(True)
+        
 
     def update_space(self, old_space):
         return old_space
